@@ -6,7 +6,9 @@ import pandas as pd
 import kaggle
 # We first need to pip install kaggle for the following commands to work
 kaggle.api.authenticate()
+from python_scripts import cleaning
 
+'''
 # Downloading the data file from kaggle using the kaggle api
 !kaggle datasets download -d emmanuelfwerr/barcelona-car-accidents --unzip
 
@@ -17,6 +19,9 @@ data.to_csv('data/accidents_opendata.csv')
 os.remove('accidents_opendata.csv')
 
 #Since we already improted the data into a data frame, we dont need to read it again from the new location.
+
+'''
+data = cleaning.download_accidents_kaggle()
 
 # The data frame looks pretty clean however, theres some tidying up we can still do:
 # I'll drop the column "weekday" since this column is not very clean and the full data is in the column "weekday_name"
