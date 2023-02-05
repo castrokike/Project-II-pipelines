@@ -8,14 +8,19 @@ kaggle.api.authenticate()
 
 
 def download_accidents_kaggle():
-    os.system(kaggle.api.dataset_download_files('emmanuelfwerr/barcelona-car-accidents', path="data/", unzip=True))
-
-    # The following is a work around for an error I was encountering that did not let me write the file in the /data path.
-    # I read the downloaded csv, turn it into a data frame and export the original data to a copy of the original csv in the data path.
-    
+    """
+    This function downloads the CSV file from the dataset "barcelona-car-accidents" from Kaggle using the Kaggle API. It then uses pandas to read the CSV and returns the corresponging DataFrame.
+    """
+    os.system('kaggle datasets download -d emmanuelfwerr/barcelona-car-accidents --unzip --p "data/"')
     data = pd.read_csv('data/accidents_opendata.csv')
-    #data = pd.read_csv('accidents_opendata.csv')
-    #data.to_csv('data/accidents_opendata.csv')
-    #os.remove('accidents_opendata.csv')
 
     return data
+
+def delete_columns (df, columns):
+    """
+    This function takes a data frame a list of specific columns and deletes those columns form the dataset. It returns the same dataset without the columns specified.
+    """
+    df.drop(columns = columns, inplace=True)
+    print("Deleted columns: ", list(columns))
+    
+    return df
