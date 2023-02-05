@@ -22,5 +22,16 @@ def delete_columns (df, columns):
     """
     df.drop(columns = columns, inplace=True)
     print("Deleted columns: ", list(columns))
-    
+
+    return df
+
+def make_timestamp (df, date_columns):
+    df = df.dropna(subset=date_columns)
+    df["date"] = pd.to_datetime(df[date_columns])
+    df.drop(columns = date_columns, axis= 1, inplace=True)
+    print("Deleted columns: ", list(date_columns), "\nCreated new column 'date' with timestamp based on these columns","\n\n Date range information:")
+    print("Max date: ", df["date"].max())
+    print("Min date: ", df["date"].min())
+    print("Date range: ", df["date"].max() - df["date"].min())
+
     return df
