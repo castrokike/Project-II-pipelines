@@ -23,7 +23,7 @@ data = cleaning.download_accidents_kaggle()
 data = cleaning.delete_columns(data, ["weekday", "month_name", "weekday_name", "utm_coordinate_y", "utm_coordinate_x", "longitude", "latitude"])
 
 # Lets drop rows with more than 8 Nas, if they exist:
-data.dropna(thresh=8)
+data.dropna(thresh=8, inplace=True)
 
 # Now lets turn the separate columns that make up the date and have a single column with the timestamp as a pandas DateTime column. Since having the date is key for our future analysis, we will first drop any values that have Nans in these columns, this is built in our function.
 data = cleaning.make_timestamp(data,["year",  "month",  "day", "hour"])
