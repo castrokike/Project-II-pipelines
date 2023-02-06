@@ -1,4 +1,4 @@
-# This file declares functions I will use to download and clean my data.
+# This file declares functions I will use to download and clean my data. This script is called by the "1-downloading-and-cleaning.py" script in this repo.
 import os
 import requests
 import pandas as pd
@@ -6,6 +6,7 @@ import kaggle
 # We first need to pip install kaggle for the following commands to work
 kaggle.api.authenticate()
 
+## Function declaration
 
 def download_accidents_kaggle():
     """

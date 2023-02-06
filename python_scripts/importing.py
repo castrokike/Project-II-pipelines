@@ -1,5 +1,8 @@
+# This script has functions I will use to import weather data from the Open Meteo API. The funcitons declared here will be called by the "1-downloading-and-cleaning.py" script in this repo.
 import requests
 import pandas as pd
+
+## Function declaration
 
 def import_weather_data():
     """
